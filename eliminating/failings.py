@@ -16,5 +16,6 @@ def failed_student(general_info:list):
         if fails:
             there_was=True
             print(f"- {numeration['name']} ({numeration['section']}): " + ", ".join(fails))
-        if not there_was:
-            print("There is not failed  students by subject")
+    
+    if not there_was:
+        print("There is not failed  students by subject")

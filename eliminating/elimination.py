@@ -1,3 +1,4 @@
+from  typing import List
 def is_valid_name(name:str)-> bool:
     if not name:
         return False
@@ -24,7 +25,7 @@ def normal_name(name:str)->str:
 def normal_section(section:str)->str:
     return section.strip().replace("","").upper()
 
-def student_existence(general_info:list, name: str, section: str)-> bool:
+def student_existence(general_info:List, name: str, section: str)-> bool:
     named= normal_name(name)
     sec=normal_section(section)
     for numeration in general_info: 
@@ -39,7 +40,7 @@ def student_location(general_info:list, name:str, section:str)->int:
             return i
     return -1
 
-def rip_student_out(general_info:list):
+def rip_student_out(general_info:List):
     name = input("Name of the student you wanna eliminate: ")
     section= input("Section (ej, 10A): ")
 

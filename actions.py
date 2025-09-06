@@ -1,6 +1,8 @@
-general_info=[]
+from typing import List, Dict, Any, Optional
 
-def validating(courses):
+Students=Dict[str, Any]
+
+def validating(courses:str)->float:
     while True:
         try:
             score=float(input(courses))
@@ -13,13 +15,12 @@ def validating(courses):
 
         
         
-def entering_information():
-    global general_info
+def entering_information(general_info:List[Students])->List[Students]:
     try:
         amount=int(input('Enter the amount of students'))
     except:
         print('It is not valid')
-        return
+        return general_info
     for apprentices in range(amount):
         print(f"/n Student number {apprentices+1}")
         while True:
@@ -48,9 +49,9 @@ def entering_information():
         }
         general_info.append(student_list)
         print("student entered successfully")
+    return general_info
 
-
-def general_information():
+def general_information(general_info:List[Students])->None:
     if not general_info:
         print('The student was not registered')
         return
@@ -65,10 +66,10 @@ def general_information():
         print(f'Science: {student_list["science"]}')
         print(f'Average: {student_list["average"]:.2f}')
     
-def top3():
+def top3(general_info:List[Students], n: int=3)->List[Students]:
     if len(general_info)<1:
         print("There are not registered students")
-    three=sorted(general_info, key=lambda x:x['average'], reverse=True)[:3]
+    three=sorted(general_info, key=lambda x:x['average'], reverse=True)[:n]
 
 
     print("\n Students Top 3!")
@@ -76,10 +77,10 @@ def top3():
         print(f"\n #{s}-{student_list["name"]}")
         print(f"Section-{student_list["section"]}")
         print(f"Average-{student_list["average"]:.2f}")
-def average_score():
+def average_score(general_info: List[Students])-> Optional[float]:
     if not general_info:
         print("No students registered")
-        return
+        return None
     total_average= sum(student_list["average"] for student_list in general_info)
     form= total_average/len(general_info)
-    print(f"the overall average is: {form:.2f}")
+    print(f"the overall average is: {form:.2f}")    

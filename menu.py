@@ -1,7 +1,8 @@
-from actions import entering_information, general_information,top3,average_score,general_info
+from actions import entering_information, general_information,top3,average_score
 from data import export, import_CSV
 from eliminating.failings import failed_student
 from eliminating.elimination import rip_student_out
+from typing import List, Dict
 def menu_face():  
     print("\n Main Menu")
     print("1.Entering information from the students")
@@ -15,21 +16,22 @@ def menu_face():
     print("9. Exit")
 
 def main():
+    general_info:List[Dict]=[]
     while True:
         menu_face()
         option=input("Enter the number you wanna pick").strip()
         if option=="1":
-            entering_information()
+            entering_information(general_info)
         elif option=="2":
-            general_information()
+            general_information(general_info)
         elif option=="3":
-            top3()
+            top3(general_info)
         elif option=="4":
-            average_score()
+            average_score(general_info)
         elif option=="5":
-            export()
+            export(general_info)
         elif option=="6":
-            import_CSV()
+            import_CSV(general_info)
         elif option=="7":
             failed_student(general_info)
         elif option=="8":
