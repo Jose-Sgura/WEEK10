@@ -1,6 +1,13 @@
-from typing import List, Dict, Any, Optional
+from typing import List, Optional, TypedDict
 
-Students=Dict[str, Any]
+class Students(TypedDict):
+    name:str
+    section:str
+    spanish: float
+    english: float
+    social: float
+    science: float
+    average: float
 
 def validating(courses:str)->float:
     while True:
@@ -15,7 +22,7 @@ def validating(courses:str)->float:
 
         
         
-def entering_information(general_info:List[Students])->List[Students]:
+def entering_information(general_info:List[Students:[]])->List[Students]:
     try:
         amount=int(input('Enter the amount of students'))
     except:
